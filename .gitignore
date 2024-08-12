@@ -1,0 +1,8 @@
+node_modules
+src/config/config.js
+log/*
+test.js
+sessions/*
+src/reference/*
+package-lock.json
+.DS_Store
