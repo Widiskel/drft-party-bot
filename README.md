@@ -16,7 +16,8 @@ DWYOR, DRFT party is car game on TON network backed by binance labs
 ## DRFT Party Airdrop
 New Airdrops : DRFT Party
 🏷 Reward : Coin ( Distribution After TGE )
-🪂 Register : https://t.me/Drftbot/app?startapp=5703822759
+
+🪂 Register : https://t.me/drft_party_bot/game?startapp=5703822759
 
 📖 DRFT Party is car game on TON backed by binance labs.
 
