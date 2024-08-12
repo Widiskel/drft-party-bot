@@ -53,8 +53,13 @@ export class Drft extends API {
             ...this.gameData._grid.map((item) => item.level)
           );
           // console.log(this.gameData._grid);
-          for (const item of Array(399 - this.maxLevel)) {
+
+          if (this.maxLevel > 400) {
             await this.initGameData();
+          } else {
+            for (const item of Array(399 - this.maxLevel)) {
+              await this.initGameData();
+            }
           }
           resolve();
         } catch (error) {
