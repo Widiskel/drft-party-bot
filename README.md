@@ -38,7 +38,7 @@ New Airdrops : DRFT Party
 2. run `npm install`
 3. run `npm i telegram@2.22.2`
 4. run `cp src/config/config_tmp.js src/config/config.js`
-   To configure the app, open `src/config.js` and add your telegram app id and hash there
+   To configure the app, open `src/config/config.js` and add your telegram app id and hash there
 5. run `mkdir sessions`
 6. to start the app run `npm run start`
 
