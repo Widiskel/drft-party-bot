@@ -108,8 +108,8 @@ export class Drft extends API {
         _boosts: this.gameData._boosts,
         airDropsQueue: [],
         cash:
-          this.gameData.cash < 99999999999999999999999999999999
-            ? 99999999999999999999999999999999
+          this.gameData.cash < 9999999999999999999999999999999999999999
+            ? 9999999999999999999999999999999999999999
             : this.gameData.cash,
         settings: { sfx: false, music: false, haptics: true },
       }),
