@@ -53,12 +53,15 @@ export class Drft extends API {
           );
           // console.log(this.gameData._grid);
 
-          if (this.maxLevel > 200) {
+          if (this.maxLevel < 200) {
             await this.initGameData();
           } else {
-            for (const item of Array(399 - this.maxLevel)) {
-              await this.initGameData();
-            }
+            await Helper.delay(
+              1000,
+              this.account,
+              `Your max car level already > 200, skipping inject`,
+              this
+            );
           }
           resolve();
         } catch (error) {
@@ -96,7 +99,7 @@ export class Drft extends API {
       data: JSON.stringify({
         _grid: grid,
         carPurchases: this.gameData.carPurchases,
-        mergesCount: 97000,
+        mergesCount: this.gameData.mergesCount + 6,
         currentTime: Math.floor(Date.now() / 1000),
         lastFixedTime: Math.floor(Date.now() / 1000),
         lastDropTime: this.gameData.lastDropTime,
