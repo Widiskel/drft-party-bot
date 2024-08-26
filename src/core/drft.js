@@ -33,11 +33,10 @@ export class Drft extends API {
   async initWss() {
     return new Promise(async (resolve, reject) => {
       await Helper.delay(1000, this.account, `Connecting to WSS...`, this);
-      const socketUrl = `wss://drftparty.fibrum.com/?token=${Buffer.from(
+      const socketUrl = `wss://drftparty.fibrum.com/ws?token=${Buffer.from(
         this.query
       ).toString("base64")}`;
-      this.wss = new WebSocket(socketUrl);
-
+      this.wss = new WebSocket(socketUrl, []);
       this.wss.on("open", async () => {
         await Helper.delay(1000, this.account, `WSS Connected...`, this);
       });
@@ -54,7 +53,7 @@ export class Drft extends API {
           );
           // console.log(this.gameData._grid);
 
-          if (this.maxLevel > 400) {
+          if (this.maxLevel > 200) {
             await this.initGameData();
           } else {
             for (const item of Array(399 - this.maxLevel)) {
@@ -68,8 +67,7 @@ export class Drft extends API {
       });
 
       this.wss.on("error", async (error) => {
-        reject();
-        throw Error(`WSS Error : ${error.message}`);
+        reject(error);
       });
 
       this.wss.on("close", async () => {
