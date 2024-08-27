@@ -34,11 +34,11 @@ New Airdrops : DRFT Party
 
 ## Setup & Configure BOT
 
-1. clone project repo `git clone https://github.com/Widiskel/Drft-bot.git` and cd to project dir `cd Drft-bot`
+1. clone project repo `git clone https://github.com/Widiskel/drft-party-bot.git` and cd to project dir `cd drft-party-bot`
 2. run `npm install`
 3. run `npm i telegram@2.22.2`
 4. run `cp src/config/config_tmp.js src/config/config.js`
-   To configure the app, open `src/config/config.js` and add your telegram app id and hash there
+   To configure the app, run `nano src/config/config.js` and add your telegram app id and hash there
 5. run `mkdir sessions`
 6. to start the app run `npm run start`
 
