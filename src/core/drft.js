@@ -47,25 +47,28 @@ export class Drft extends API {
             `Receiving WSS Msg : ${JSON.stringify(JSON.parse(wssmsg))}`
           );
           const msg = JSON.parse(wssmsg);
-          this.gameData = JSON.parse(msg.data);
-          this.maxLevel = Math.max(
-            ...this.gameData._grid.map((item) => item.level)
-          );
-          console.log(this.maxLevel);
-
-          if (this.maxLevel < 200) {
-            for (const item of Array(200 - this.maxLevel)) {
-              await this.initGameData();
-            }
-          } else {
-            await Helper.delay(
-              1000,
-              this.account,
-              `Your max car level already > 200, skipping inject`,
-              this
+          // console.log(msg);
+          if (msg.command != "sync") {
+            this.gameData = JSON.parse(msg.data);
+            this.maxLevel = Math.max(
+              ...this.gameData._grid.map((item) => item.level)
             );
+            // console.log(this.maxLevel);
+
+            if (this.maxLevel < 200) {
+              for (const item of Array(200 - this.maxLevel)) {
+                await this.initGameData();
+              }
+            } else {
+              await Helper.delay(
+                1000,
+                this.account,
+                `Your max car level already > 200, skipping inject`,
+                this
+              );
+            }
+            resolve();
           }
-          resolve();
         } catch (error) {
           throw Error(`Error Parsing Msg : ${error.message}`);
         }
