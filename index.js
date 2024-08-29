@@ -6,26 +6,33 @@ import logger from "./src/utils/logger.js";
 import twist from "./src/utils/twist.js";
 
 async function operation(acc, query, queryObj) {
-  try {
-    const drft = new Drft(acc, query, queryObj);
-    await drft.login();
-    await drft.initWss();
+  return new Promise(async (resolve, reject) => {
+    try {
+      const drft = new Drft(acc, query, queryObj);
+      await drft.login();
+      await drft.initWss();
 
-    await drft.wss.close();
-
-    twist.clear(acc);
-    twist.clearInfo();
-    await Helper.delay(500, acc, `Account ${acc.id} Processing Complete`, drft);
-  } catch (error) {
-    twist.clear(acc);
-    twist.clearInfo();
-    await Helper.delay(
-      10000,
-      acc,
-      `Error : ${error.message}, Retrying after 10 Second`
-    );
-    await operation(acc, query, queryObj);
-  }
+      twist.clear(acc);
+      twist.clearInfo();
+      await drft.wss.close();
+      await Helper.delay(
+        500,
+        acc,
+        `Account ${acc.id} Processing Complete`,
+        drft
+      );
+      resolve();
+    } catch (error) {
+      twist.clear(acc);
+      twist.clearInfo();
+      await Helper.delay(
+        10000,
+        acc,
+        `Error : ${error.message}, Retrying after 10 Second`
+      );
+      reject();
+    }
+  });
 }
 
 let init = false;
