@@ -15,13 +15,7 @@ async function operation(acc, query, queryObj) {
 
     twist.clear(acc);
     twist.clearInfo();
-    await Helper.delay(
-      60000 * 60,
-      acc,
-      `Account ${acc.id} Processing Complete`,
-      drft
-    );
-    // await operation(acc, query, queryObj);
+    await Helper.delay(500, acc, `Account ${acc.id} Processing Complete`, drft);
   } catch (error) {
     twist.clear(acc);
     twist.clearInfo();
