@@ -104,7 +104,8 @@ export class Drft extends API {
       data: JSON.stringify({
         _grid: grid,
         carPurchases: this.gameData.carPurchases,
-        mergesCount: this.gameData.mergesCount + 6,
+        // mergesCount: this.gameData.mergesCount + 6,
+        mergesCount: 999999,
         currentTime: Math.floor(Date.now() / 1000),
         lastFixedTime: Math.floor(Date.now() / 1000),
         lastDropTime: this.gameData.lastDropTime,
@@ -112,8 +113,8 @@ export class Drft extends API {
         airDropsQueue: [],
         cash:
           this.gameData.cash <
-          99999999999999999999999999999999999999999999999999999999999999999999999999999999
-            ? 99999999999999999999999999999999999999999999999999999999999999999999999999999999
+          999999999999999999999999999999999999999999999999999999
+            ? 999999999999999999999999999999999999999999999999999999
             : this.gameData.cash,
         settings: { sfx: false, music: false, haptics: true },
       }),
