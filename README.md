@@ -23,7 +23,7 @@ New Airdrops : DRFT Party
 
 ## BOT FEATURE
 
-- Auto Level UP Car Until level 650 (max level is i think 660)
+- Auto Level UP Car Until level 600 (max level is i think 640)
 
 ## Prerequisite
 

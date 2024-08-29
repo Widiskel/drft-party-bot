@@ -14,7 +14,7 @@ export class Drft extends API {
     this.account = account;
     this.query = query;
     this.queryObj = queryObj;
-    this.carMaxLevel = 650;
+    this.carMaxLevel = 600;
   }
 
   async login() {
