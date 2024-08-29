@@ -14,6 +14,7 @@ export class Drft extends API {
     this.account = account;
     this.query = query;
     this.queryObj = queryObj;
+    this.carMaxLevel = 650;
   }
 
   async login() {
@@ -55,15 +56,13 @@ export class Drft extends API {
             );
             // console.log(this.maxLevel);
 
-            if (this.maxLevel < 200) {
-              for (const item of Array(200 - this.maxLevel)) {
-                await this.initGameData();
-              }
+            if (this.maxLevel < this.carMaxLevel) {
+              await this.initGameData();
             } else {
               await Helper.delay(
                 1000,
                 this.account,
-                `Your max car level already > 200, skipping inject`,
+                `Your max car level already > ${this.carMaxLevel}, skipping inject`,
                 this
               );
             }
@@ -92,7 +91,8 @@ export class Drft extends API {
   async initGameData() {
     await Helper.delay(500, this.account, `Sending Modify Game Data...`, this);
     const grid = this.gameData._grid.map((item) => {
-      item.level = this.maxLevel + 1;
+      // item.level = this.maxLevel + 650;
+      item.level = this.carMaxLevel;
       item.state = 1;
       return item;
     });
@@ -111,8 +111,9 @@ export class Drft extends API {
         _boosts: this.gameData._boosts,
         airDropsQueue: [],
         cash:
-          this.gameData.cash < 9999999999999999999999999999999999999999
-            ? 9999999999999999999999999999999999999999
+          this.gameData.cash <
+          99999999999999999999999999999999999999999999999999999999999999999999999999999999
+            ? 99999999999999999999999999999999999999999999999999999999999999999999999999999999
             : this.gameData.cash,
         settings: { sfx: false, music: false, haptics: true },
       }),
