@@ -1,4 +1,7 @@
 # DRFT PARTY BOT
+
+
+**THIS BOT IS DEPRECATED ALREADY**
 DWYOR, DRFT party is car game on TON network backed by binance labs
 
 ## Table Of Contents
